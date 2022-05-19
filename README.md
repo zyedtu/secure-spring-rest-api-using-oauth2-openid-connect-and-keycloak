@@ -46,19 +46,19 @@ Si vous répondez oui, vous serez redirigé vers l’URL de redirection avec un 
 - Étape 3 - Autorisation en échange d’un token d’accès: Le client envoie le code d’autorisation au serveur d’autorisation de Facebook, en échange d’un token d’accès à votre liste de contacts. Ce token détient des informations d’autorisation de Facebook.   
 - Étape 4 - Validation avec le serveur de ressources: Ce token est envoyé vers le serveur API de Facebook, qui est appelé serveur de ressources dans ce workflow. Ce serveur vérifie les informations sur le token d’accès, et permet au client d’accéder aux données d’utilisateur requises dans l’application. 
 
-![Alt text](https://github.com/zyedtu/OAuth2OpenIDkeycloak/blob/master/src/main/resources/flux-code-autorisation.png?raw=true "Title")
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/flux-code-autorisation.png?raw=true "Title")
 
 # OpenID Connect (OIDC):   
 OpenID Connect est une couche d'identité au-dessus du protocole OAuth 2.0. Il étend OAuth 2.0 pour normaliser un moyen d'authentification.       
 - OAuth 2.0: sert pour l'autorisation.     
 - OpenID Connect:  sert à l'authentification.    
 
-Si vous êtes confus par ces termes, voici la différence entre eux.
+Si vous êtes confu	s par ces termes, voici la différence entre eux.
 
 - l'authentification: celui qui utilise l’application doit être identifié par un couple username/password.
 - l'autorisations: tous les utilisateurs n’ont pas nécessairement accès aux mêmes fonctionnalités. Par exemple, un utilisateur non administrateur ne doit pas pouvoir modifier de compte autre que le sien.    
 
-![Alt text](https://github.com/zyedtu/OAuth2OpenIDkeycloak/blob/master/src/main/resources/openIDConnect.png?raw=true "Title")
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/openIDConnect.png?raw=true "Title")
 
 OAuth ne fournit pas immédiatement l'identité de l'utilisateur, mais plutôt un jeton d'accès pour l'autorisation. OpenID Connect permet au client d'identifier l'utilisateur sur la base de l'authentification effectuée par le serveur d'autorisation. Ceci est réalisé en définissant un périmètre-une portée (**scope**) nommée *openid* lors de la demande au serveur d'autorisation pour la connexion et le consentement de l'utilisateur. openid est une portée- scope obligatoire pour indiquer au serveur d'autorisation qu'OpenID Connect est requis.       
 Le résultat de la requête est un code d'application que le client peut échanger contre un jeton d'accès et un jeton d'identification.     
