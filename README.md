@@ -2,6 +2,7 @@
 		
 		
 # Aperçu (Overview): 
+
 Ce tutoriel explique comment nous pouvons sécuriser nos API REST à l'aide du protocole OpenId Connect. Nous utiliserons KeyCloak comme fournisseur d'identité (IAM).      
 # OAuth (Open Authorization):
 est un protocole standard d'autorisation **déléguée**. Il permet aux applications d'accéder aux données de l'utilisateur sans le mot de passe de l'utilisateur.      
