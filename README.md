@@ -97,14 +97,48 @@ Si le client a besoin de plus d'informations sur l'utilisateur, il peut spécifi
 # keycloak:   
 Keycloak est une solution open source de gestion des identités et des accès (**IAM Identity and Access Management**) destinée aux applications et services modernes. Keycloak fournit des services d'authentification et d'autorisation prêts à l'emploi ainsi que des fonctionnalités avancées telles que la fédération d'utilisateurs, le courtage d'identité et la connexion sociale.   
 ### Installation de keyCloak:
-L'installation avec docker-compose n'est pas voulu aboutir, du coup j'ai installé aver la commande run sur une image.  
+##### With Docker cmd:
 
 	> docker run -p 9080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:18.0.0 start-dev
-
 Cela démarrera Keycloak exposé sur le port local 9080. Il créera également un utilisateur administrateur initial avec un nom d'utilisateur admin et un mot de passe admin.      
 Ensuite pour accéder à l'interface graphique on tappe cet url:
 
 	http://localhost:9080/admin
+##### With docker compose:  
+Dans mon projet j'ai opté avec *docker compose*, pour cela fonctionne j'ai du aussi ajouté une configuration dans *Dockerfile*:    
+Tout d'abort je crée le fichier docker-cmpose.yml:   
+
+		version: '3.8'
+		
+		services:
+		    keycloak:
+		        build:
+		            context: ./keycloak
+		        container_name: keycloak
+		        hostname: keycloak
+		        environment:
+		            DB_VENDOR: h2
+		            KEYCLOAK_LOGLEVEL: WARN
+		            KEYCLOAK_ADMIN: admin
+		            KEYCLOAK_ADMIN_PASSWORD: admin
+		        ports:
+		            - "8089:8080"
+		            - "9990:9990"
+Ensuite sous le repetoire keycloak je crée le fichier Dockerfile:    
+
+	FROM quay.io/keycloak/keycloak:17.0.0
+	RUN /opt/keycloak/bin/kc.sh build
+	
+	ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+et pour lance le docker compose je lance cette commande:
+
+	> docker compose up -d 
+la j'ai ajouté le -d pour le mode détach.      
+
+Cela démarrera Keycloak exposé sur le port local 8089. Il créera également un utilisateur administrateur initial avec un nom d'utilisateur *admin* et un mot de passe *admin*.      
+Ensuite je peux vérifier que tout va bien avec l'interface graphique sur cette url:     
+
+	http://localhost:8089/
 ### Configurer KeyCloak pour sécuriser une API Rest:  
 KeyCloak est livré avec un domaine par défaut de Master.     
 On va créer un nouveau domain, on click sur **Add realm**, on suite on ajoute un domain qu'on l'appelle Microservices.     
@@ -143,9 +177,10 @@ Comme on travaille avec OAUTH 2.0 on a besoin d'ajouter cette deépendence dans 
 
 Nous aurons besoin de spring-boot-starter-oauth2-resource-server , le démarreur de Spring Boot pour la prise en charge du serveur de ressources. Ce démarreur inclut Spring Security par défaut, nous n'avons donc pas besoin de l'ajouter explicitement.        
 
-https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-1
-https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-2
-https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-3
-https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-4
-https://ravthiru.medium.com/springboot-oauth2-with-keycloak-for-bearer-client-3a31f608a78
-https://www.baeldung.com/spring-security-oauth-resource-server
+https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-1     
+https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-2    
+https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-3     
+https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-4     
+https://ravthiru.medium.com/springboot-oauth2-with-keycloak-for-bearer-client-3a31f608a78    
+https://www.baeldung.com/spring-security-oauth-resource-server     
+https://blog.devgenius.io/secure-your-spring-boot-application-using-keycloak-8c63e0530089     
