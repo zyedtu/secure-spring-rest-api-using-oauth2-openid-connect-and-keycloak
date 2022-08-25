@@ -19,7 +19,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri : http://localhost:9080/realms/Microservices
+          issuer-uri : http://localhost:8089/realms/student-oidc
 
 logging:
   level:

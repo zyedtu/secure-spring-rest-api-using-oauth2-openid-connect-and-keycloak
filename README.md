@@ -6,14 +6,14 @@ Ce tutoriel explique comment nous pouvons sécuriser nos API REST à l'aide du p
 # Quelques façons d'authentifier une requête HTTP:   
 * Authentification de base HTTP: Il s'agit de la technique la plus simple dans laquelle nous combinons nom d'utilisateur et mot de passe pour former une seule valeur. Cette valeur unique est ensuite encodée avec Base64 et transmise via l'en-tête HTTP Authorization. Le serveur vérifie l'en-tête d'autorisation et le compare aux informations d'identification stockées (nom d'utilisateur et mot de passe). S'ils correspondent, le serveur répond à la demande du client. Cependant, s'ils ne correspondent pas, le code d'état HTTP 401 pour indiquer un accès non autorisé est renvoyé au demandeur. Ce code informe le client de l'échec de l'authentification et la demande du client est donc refusée. Regardons l'exemples suivant avec **httpBasic()**:   
 
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-         .csrf().disable()
-         .authorizeRequests().anyRequest().authenticated()
-         .and()
-         .httpBasic();
-    }
+			@Override
+		    protected void configure(HttpSecurity http) throws Exception {
+		        http
+		         .csrf().disable()
+		         .authorizeRequests().anyRequest().authenticated()
+		         .and()
+		         .httpBasic();
+		    }
     
 * Authentification OAuth: OAuth est une authentification basée sur les **jetons** on va voir d'avantage sur ce protocole dans ce cours
 
@@ -141,10 +141,32 @@ Ensuite je peux vérifier que tout va bien avec l'interface graphique sur cette 
 	http://localhost:8089/
 ### Configurer KeyCloak pour sécuriser une API Rest:  
 KeyCloak est livré avec un domaine par défaut de Master.     
-On va créer un nouveau domain, on click sur **Add realm**, on suite on ajoute un domain qu'on l'appelle Microservices.     
-### Enregistrez notre API Rest en tant que client KeyCloak OAuth 2.0:   
-Sélectionnez Clients dans le menu de navigation de gauche, puis cliquez sur le bouton **Créer**. Veuillez confirmer que vous êtes dans le domaine MicroServices:    
-TODO part-1
+On va créer un nouveau domain, on click sur **Add realm**, on suite on ajoute un domain qu'on l'appelle student-oidc (student Open ID Connect).           
+### Enregistrez un client KeyCloak OAuth 2.0:   
+Sélectionnez Clients dans le menu de navigation de gauche, puis cliquez sur le bouton **Créer**. Veuillez confirmer que vous êtes dans le domaine student-oidc:    
+On crée le client *manager-student* avec c'est deux information:   
+	- ID client: manager-student   
+	- Protocole client : openid-connect   
+
+KeyCloak présentera maintenant une fenêtre pour ajouter des propriétés supplémentaires pour ce client:   
+	- Access Type: confidential     
+	- Valid redirect URIs: http://localhost:3000/*    
+
+Remarque : des URI de redirection valides sont nécessaires si vous essayez d'accéder à l'API via une application frontale comme Angular . Puisque nous allons accéder à l'API via Postman , cette URL peut être n'importe quelle URL et n'a pas besoin d'être une URL active.      
+### Ajouter des rôles:
+Dans l'onglet **Roles** on clique et on add les nouveaux rôles, dans mon cas j'ai ajouté deux rôles:   
+	- ADMIN.    
+	- USER.   
+### Créer un ClientScope:
+TODO     
+### Ajouter des utilisateurs:
+Dans l'onglet  **Users** on ajoute des nouveaux utilisateurs, add -> le nom de l'utilisateur ensuite save.   
+Ensuite dans *Credentials* on crée le password de l'utilisateur.   
+Enfin on donne le rôle de l'utilisateur dans *Role Mapping*.   
+Dan mon projet j'ai crée deux utilisatuers.  
+	- ziedadmin avec un rôle ADMIN (password admin)    
+	- zieduser avec un rôle USER (password user)    
+	
 # Mettre en place une API Rest:   
 Dans cette partie on va mettre une application web restful seécuriéé par spring sécurité. Cette application va gérer les Student Service, est un simple CRUD API pour créer et supprimer des étudiants.   
 ###  Configuration de Spring Security:   
@@ -176,6 +198,54 @@ Comme on travaille avec OAUTH 2.0 on a besoin d'ajouter cette deépendence dans 
 		</dependency>
 
 Nous aurons besoin de spring-boot-starter-oauth2-resource-server , le démarreur de Spring Boot pour la prise en charge du serveur de ressources. Ce démarreur inclut Spring Security par défaut, nous n'avons donc pas besoin de l'ajouter explicitement.        
+### The application.yml file:  
+Dans notre fichier *application.yml* on va ajouter les détails du serveur KeyCloak, Spring Security utilise ces informations pour se connecter à KeyCloak et vérifier les informations d'identification de chaque utilisateur tentant d'accéder à l'API StudentService.  Cette URI est un format **standard**.       
+spring:
+  security: 
+    oauth2: 
+      resourceserver: 
+        jwt:
+          issuer-uri : http://localhost:$port/auth/realms/$realm     
+$port: 	le port sur lequel le serveur Keycloak est exécuté, dan smon cas est 8089     
+$realm: le nom du domaine configuré dans mon cas est student-oidc.   
+La configuration complète est:  
+
+		spring:
+		  security:
+		    oauth2:
+		      resourceserver:
+		        jwt:
+		          issuer-uri : http://localhost:8089/realms/student-oidcr
+
+# Créer un code d'autorisation dans Postman:
+
+### Récupérer le secret client:  
+Cliquez sur l'onglet Informations d'identification et copiez le secret. Ce sera le secret client que nous utiliserons pour nous authentifier auprès de KeyCloak      
+
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/credentials_client_oauth2.png?raw=true "Title")
+
+### Récupérer l'URL de jeton:  
+Nous devons également obtenir l' URL du jeton Keycloak pour générer un code d'autorisation (Token) pour notre client. Nous pouvons obtenir cela à partir du domaine *student-oidc* . Cliquez sur le paramètre Realm, puis cliquez sur Endpoints.   
+
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/token_url.png?raw=true "Title")
+
+L'URL récuérée est ci-dessous:
+
+		http://localhost:8089/realms/student-oidc/protocol/openid-connect/token
+Nous avons maitenant tous les paramètres  dont nous avons besoin pour nous authentifier avec KeyCloak   et créer un code d'autorisation:    
+	- Client id.   
+	- Client Secret.   
+	- Keycloak Token Endpoint.   
+	
+Nous pouvons maintenant utiliser ces paramètres dans Postman pour créer un code d'autorisation (**token**). Ce token sera ensuite envoyé dans le header à chaque appel à l'API du service Étudiant. Nous devrions alors pouvoir invoquer toutes les opérations sans obtenir d'erreur d'autorisation.    
+### Créer le token dans Postman:     
+
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/postman_token.png?raw=true "Title")
+
+
+
+
+
 
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-1     
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-2    
