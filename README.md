@@ -215,9 +215,9 @@ La configuration complète est:
 		    oauth2:
 		      resourceserver:
 		        jwt:
-		          issuer-uri : http://localhost:8089/realms/student-oidcr
+		          issuer-uri : http://localhost:8089/realms/student-oidc
 
-# Créer un code d'autorisation dans Postman:
+# Créer un code d'autorisation (Token) dans Postman:
 
 ### Récupérer le secret client:  
 Cliquez sur l'onglet Informations d'identification et copiez le secret. Ce sera le secret client que nous utiliserons pour nous authentifier auprès de KeyCloak      
@@ -229,7 +229,7 @@ Nous devons également obtenir l' URL du jeton Keycloak pour générer un code d
 
 ![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/token_url.png?raw=true "Title")
 
-L'URL récuérée est ci-dessous:
+L'URL récupérée est ci-dessous:
 
 		http://localhost:8089/realms/student-oidc/protocol/openid-connect/token
 Nous avons maitenant tous les paramètres  dont nous avons besoin pour nous authentifier avec KeyCloak   et créer un code d'autorisation:    
@@ -242,10 +242,46 @@ Nous pouvons maintenant utiliser ces paramètres dans Postman pour créer un cod
 
 ![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/postman_token.png?raw=true "Title")
 
+# Ajout des règle d'autorisation: 
+Dans cette partie on va créer une API qui permet d'ajouter un étudiant (student), mais que l'utilisateur qui a le rôle ADMIN peut faire cette action.    
+### L'ajout du controller:   
 
+	@PostMapping(value = "/v1/students")
+	public ResponseEntity<Integer> saveStudent(@RequestBody Student student) {
+		Integer studentId = studentService.integrationStudent(student);
+		return new ResponseEntity<>(studentId, HttpStatus.CREATED);
+	}
+### On crée une Enum pour les rôles:  
 
+		public enum Roles {
+			ADMIN,
+			USER
+		}  
+### Configuration spring sécurity:   
 
+	@Configuration
+	@EnableWebSecurity
+	@EnableGlobalMethodSecurity(prePostEnabled = true)
+	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+				http.cors()
+					.and()
+					.authorizeRequests()
+						.antMatchers(HttpMethod.POST, "/v1/students")
+						.hasRole(Roles.ADMIN.name())
+					.anyRequest()
+					.authenticated()
+					.and()
+					.oauth2ResourceServer()
+					.jwt();
+		}
+	}
 
+Avec **antMatchers**: on dit que pour la méthode POST et avec l'URI /v1/students, il y a que les utilisateurs qui ont le rôle **hasRole(Roles.ADMIN.name())** peuvent faire cette action.    
+
+(
 
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-1     
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-2    
