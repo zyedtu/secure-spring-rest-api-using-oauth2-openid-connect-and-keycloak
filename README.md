@@ -266,16 +266,16 @@ Dans cette partie on va créer une API qui permet d'ajouter un étudiant (studen
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-				http.cors()
-					.and()
-					.authorizeRequests()
-						.antMatchers(HttpMethod.POST, "/v1/students")
-						.hasRole(Roles.ADMIN.name())
-					.anyRequest()
-					.authenticated()
-					.and()
-					.oauth2ResourceServer()
-					.jwt();
+			http.cors()
+				.and()
+				.authorizeRequests()
+					.antMatchers(HttpMethod.POST, "/v1/students")
+					.hasRole(Roles.ADMIN.name())
+				.anyRequest()
+				.authenticated()
+				.and()
+				.oauth2ResourceServer()
+				.jwt();
 		}
 	}
 
