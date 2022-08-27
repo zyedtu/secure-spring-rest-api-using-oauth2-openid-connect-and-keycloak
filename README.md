@@ -281,7 +281,12 @@ Dans cette partie on va créer une API qui permet d'ajouter un étudiant (studen
 
 Avec **antMatchers**: on dit que pour la méthode POST et avec l'URI /v1/students, il y a que les utilisateurs qui ont le rôle **hasRole(Roles.ADMIN.name())** peuvent faire cette action.    
 
-(
+
+
+
+
+
+
 
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-1     
 https://www.todaystechnology.org/post/secure-spring-rest-api-using-openid-connect-and-keycloak-part-2    
