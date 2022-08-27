@@ -25,4 +25,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentJpaRepository.findById(studentId);
 	}
 
+	@Override
+	public Integer integrationStudent(Student student) {
+		Student save = studentJpaRepository.save(student);
+		return save.getId();
+	}
+
 }

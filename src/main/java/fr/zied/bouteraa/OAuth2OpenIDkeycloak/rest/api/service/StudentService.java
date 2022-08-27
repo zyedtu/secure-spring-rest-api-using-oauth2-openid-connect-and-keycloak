@@ -9,4 +9,5 @@ public interface StudentService {
 
 	 List<Student> fetchAllStudents();
 	 Optional<Student> retrieveByStudentId(Integer studentId);
+	 Integer integrationStudent(Student student);
 }

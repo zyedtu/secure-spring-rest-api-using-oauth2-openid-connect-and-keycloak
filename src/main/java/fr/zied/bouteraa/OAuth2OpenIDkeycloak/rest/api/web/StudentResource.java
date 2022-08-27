@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.zied.bouteraa.OAuth2OpenIDkeycloak.rest.api.entity.Student;
@@ -24,5 +26,12 @@ public class StudentResource {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		List<Student> fetchAllStudents = studentService.fetchAllStudents();
 		return new ResponseEntity<List<Student>>(fetchAllStudents, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/v1/students")
+	public ResponseEntity<Integer> saveStudent(@RequestBody Student student) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Integer studentId = studentService.integrationStudent(student);
+		return new ResponseEntity<>(studentId, HttpStatus.CREATED);
 	}
 }
