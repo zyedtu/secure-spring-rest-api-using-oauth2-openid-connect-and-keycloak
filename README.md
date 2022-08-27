@@ -264,8 +264,8 @@ Dans cette partie on va créer une API qui permet d'ajouter un étudiant (studen
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
 			http.cors()
 				.and()
 				.authorizeRequests()
