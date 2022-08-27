@@ -7,13 +7,13 @@ Ce tutoriel explique comment nous pouvons sécuriser nos API REST à l'aide du p
 * Authentification de base HTTP: Il s'agit de la technique la plus simple dans laquelle nous combinons nom d'utilisateur et mot de passe pour former une seule valeur. Cette valeur unique est ensuite encodée avec Base64 et transmise via l'en-tête HTTP Authorization. Le serveur vérifie l'en-tête d'autorisation et le compare aux informations d'identification stockées (nom d'utilisateur et mot de passe). S'ils correspondent, le serveur répond à la demande du client. Cependant, s'ils ne correspondent pas, le code d'état HTTP 401 pour indiquer un accès non autorisé est renvoyé au demandeur. Ce code informe le client de l'échec de l'authentification et la demande du client est donc refusée. Regardons l'exemples suivant avec **httpBasic()**:   
 
 			@Override
-		    protected void configure(HttpSecurity http) throws Exception {
-		        http
-		         .csrf().disable()
-		         .authorizeRequests().anyRequest().authenticated()
-		         .and()
-		         .httpBasic();
-		    }
+			protected void configure(HttpSecurity http) throws Exception {
+				http
+				.csrf().disable()
+				.authorizeRequests().anyRequest().authenticated()
+				.and()
+				.httpBasic();
+			}
     
 * Authentification OAuth: OAuth est une authentification basée sur les **jetons** on va voir d'avantage sur ce protocole dans ce cours
 
