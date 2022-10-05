@@ -63,13 +63,16 @@ Si vous répondez oui, vous serez redirigé vers l’URL de redirection avec un 
 
 # OpenID Connect (OIDC):   
 OpenID Connect est une couche d'identité au-dessus du protocole OAuth 2.0. Il étend OAuth 2.0 pour normaliser un moyen d'authentification.       
-- OAuth 2.0: sert pour l'autorisation.     
-- OpenID Connect:  sert à l'authentification.    
+Il permet aux clients de vérifier l'identité de l'utilisateur final sur la base de l'authentification effectuée par un serveur d'autorisation, ainsi que d'obtenir des informations de profil de base sur l'utilisateur final d'une manière interopérable et de type REST.     
+OpenID Connect s'appuie sur OAuth2 et ajoute une authentification. OpenID Connect ajoute des contraintes à OAuth2 comme le point de terminaison UserInfo (Endpoint), le jeton d'identification (JWT est le format obligatoire pour le jeton).   
+OpenID Connect utilise des jetons JWT pour authentifier les applications Web.     
+• OAuth 2.0: sert pour l'autorisation.     
+• OpenID Connect:  sert à l'authentification.    
 
-Si vous êtes confu	s par ces termes, voici la différence entre eux.
+Si vous êtes confus par ces termes, voici la différence entre eux.
 
-- l'authentification: celui qui utilise l’application doit être identifié par un couple username/password.
-- l'autorisations: tous les utilisateurs n’ont pas nécessairement accès aux mêmes fonctionnalités. Par exemple, un utilisateur non administrateur ne doit pas pouvoir modifier de compte autre que le sien.    
+• l'authentification: celui qui utilise l’application doit être identifié par un couple username/password.
+• l'autorisations: tous les utilisateurs n’ont pas nécessairement accès aux mêmes fonctionnalités. Par exemple, un utilisateur non administrateur ne doit pas pouvoir modifier de compte autre que le sien.    
 
 ![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/openIDConnect.png?raw=true "Title")
 

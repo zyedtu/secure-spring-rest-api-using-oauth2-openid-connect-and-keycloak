@@ -1,139 +1,0 @@
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] ---------------< fr.zied.bouteraa:OAuth2OpenIDkeycloak >----------------
-[INFO] Building OAuth2OpenIDkeycloak 0.0.1-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ OAuth2OpenIDkeycloak ---
-[INFO] Deleting D:\My_Works\workspace\OAuth2OpenIDkeycloak\target
-[INFO] 
-[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ OAuth2OpenIDkeycloak ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Using 'UTF-8' encoding to copy filtered properties files.
-[INFO] Copying 1 resource
-[INFO] Copying 4 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ OAuth2OpenIDkeycloak ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 7 source files to D:\My_Works\workspace\OAuth2OpenIDkeycloak\target\classes
-[INFO] 
-[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ OAuth2OpenIDkeycloak ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Using 'UTF-8' encoding to copy filtered properties files.
-[INFO] skip non existing resourceDirectory D:\My_Works\workspace\OAuth2OpenIDkeycloak\src\test\resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ OAuth2OpenIDkeycloak ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to D:\My_Works\workspace\OAuth2OpenIDkeycloak\target\test-classes
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ OAuth2OpenIDkeycloak ---
-[INFO] 
-[INFO] -------------------------------------------------------
-[INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests
-18:08:42.152 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-18:08:42.169 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-18:08:42.227 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-18:08:42.260 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests], using SpringBootContextLoader
-18:08:42.273 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]: class path resource [fr/zied/bouteraa/OAuth2OpenIDkeycloak/OAuth2OpenIDkeycloakApplicationTests-context.xml] does not exist
-18:08:42.275 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]: class path resource [fr/zied/bouteraa/OAuth2OpenIDkeycloak/OAuth2OpenIDkeycloakApplicationTestsContext.groovy] does not exist
-18:08:42.276 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-18:08:42.278 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]: OAuth2OpenIDkeycloakApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:08:42.420 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]
-18:08:42.570 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\My_Works\workspace\OAuth2OpenIDkeycloak\target\classes\fr\zied\bouteraa\OAuth2OpenIDkeycloak\OAuth2OpenIDkeycloakApplication.class]
-18:08:42.574 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplication for test class fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests
-18:08:42.787 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests]: using defaults.
-18:08:42.788 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
-18:08:42.836 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5a85c92, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32811494, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4795ded0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@53dacd14, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@14d14731, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2eced48b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@47c4ecdc, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42f33b5d, org.springframework.test.context.event.EventPublishingTestExecutionListener@5c8504fd, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@4b7e96a, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@6475472c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f07b12c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4bd1f8dd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7096b474, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3e14c16d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3c989952, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@784b990c]
-18:08:42.843 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2a7686a7 testClass = OAuth2OpenIDkeycloakApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@758a34ce testClass = OAuth2OpenIDkeycloakApplicationTests, locations = '{}', classes = '{class fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@cd1e646, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@15a04efb, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@560348e6, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@3fa247d1, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb346ea, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2145b572], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.6.7)
-
-2022-04-24 18:08:43.597  INFO 5584 --- [           main] b.O.OAuth2OpenIDkeycloakApplicationTests : Starting OAuth2OpenIDkeycloakApplicationTests using Java 11.0.8 on LAPTOP-T18OJKVO with PID 5584 (started by zied in D:\My_Works\workspace\OAuth2OpenIDkeycloak)
-2022-04-24 18:08:43.599  INFO 5584 --- [           main] b.O.OAuth2OpenIDkeycloakApplicationTests : No active profile set, falling back to 1 default profile: "default"
-2022-04-24 18:08:43.681 DEBUG 5584 --- [           main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7f4037ed
-2022-04-24 18:08:45.190  INFO 5584 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-04-24 18:08:45.279  INFO 5584 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 1 JPA repository interfaces.
-2022-04-24 18:08:46.254  INFO 5584 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-04-24 18:08:46.623  INFO 5584 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-04-24 18:08:47.066  INFO 5584 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-04-24 18:08:47.232  INFO 5584 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.8.Final
-2022-04-24 18:08:47.601  INFO 5584 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-04-24 18:08:48.349  INFO 5584 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-Hibernate: 
-    
-    drop table if exists student CASCADE 
-Hibernate: 
-    
-    drop sequence if exists hibernate_sequence
-Hibernate: create sequence hibernate_sequence start with 1 increment by 1
-Hibernate: 
-    
-    create table student (
-       id integer not null,
-        first_name varchar(255),
-        last_name varchar(255),
-        primary key (id)
-    )
-2022-04-24 18:08:49.502  INFO 5584 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'file:/D:/My_Works/workspace/OAuth2OpenIDkeycloak/target/classes/import.sql'
-Hibernate: 
-    INSERT INTO student_entity (ID,FIRST_NAME,LAST_NAME) VALUES (0,'PARTIBHA','PATEL')
-2022-04-24 18:08:49.509  INFO 5584 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-04-24 18:08:49.525  INFO 5584 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-04-24 18:08:49.675  WARN 5584 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-04-24 18:08:50.890 DEBUG 5584 --- [           main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
-2022-04-24 18:08:51.758 DEBUG 5584 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
-2022-04-24 18:08:52.096 DEBUG 5584 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2022-04-24 18:08:52.118 DEBUG 5584 --- [           main] edFilterInvocationSecurityMetadataSource : Adding web access control expression [authenticated] for any request
-2022-04-24 18:08:52.148  INFO 5584 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6bd28e4a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6a7fc4c1, org.springframework.security.web.header.HeaderWriterFilter@6167c42f, org.springframework.web.filter.CorsFilter@55e88bc, org.springframework.security.web.csrf.CsrfFilter@22105c76, org.springframework.security.web.authentication.logout.LogoutFilter@61ca5134, org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationFilter@20e9c165, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@69cb134, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@49de1505, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@544300a6, org.springframework.security.web.session.SessionManagementFilter@1ee6434, org.springframework.security.web.access.ExceptionTranslationFilter@464d60fb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c6a3f47]
-2022-04-24 18:08:52.508 DEBUG 5584 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-04-24 18:08:52.609 DEBUG 5584 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-04-24 18:08:52.992  INFO 5584 --- [           main] b.O.OAuth2OpenIDkeycloakApplicationTests : Started OAuth2OpenIDkeycloakApplicationTests in 10.059 seconds (JVM running for 12.214)
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.212 s - in fr.zied.bouteraa.OAuth2OpenIDkeycloak.OAuth2OpenIDkeycloakApplicationTests
-2022-04-24 18:08:53.331 DEBUG 5584 --- [ionShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@7f4037ed, started on Sun Apr 24 18:08:43 CEST 2022
-2022-04-24 18:08:53.337  INFO 5584 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-04-24 18:08:53.337  INFO 5584 --- [ionShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-Hibernate: 
-    
-    drop table if exists student CASCADE 
-Hibernate: 
-    
-    drop sequence if exists hibernate_sequence
-2022-04-24 18:08:53.347  INFO 5584 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-04-24 18:08:53.352  INFO 5584 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-[INFO] 
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] 
-[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ OAuth2OpenIDkeycloak ---
-[INFO] Building jar: D:\My_Works\workspace\OAuth2OpenIDkeycloak\target\OAuth2OpenIDkeycloak-0.0.1-SNAPSHOT.jar
-[INFO] 
-[INFO] --- spring-boot-maven-plugin:2.6.7:repackage (repackage) @ OAuth2OpenIDkeycloak ---
-Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/2.6.7/spring-boot-buildpack-platform-2.6.7.pom
-Progress (1): 2.7/3.4 kBProgress (1): 3.4 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/2.6.7/spring-boot-buildpack-platform-2.6.7.pom (3.4 kB at 2.8 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/2.6.7/spring-boot-loader-tools-2.6.7.pom
-Progress (1): 2.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/2.6.7/spring-boot-loader-tools-2.6.7.pom (2.3 kB at 57 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/2.6.7/spring-boot-loader-tools-2.6.7.jar
-Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/2.6.7/spring-boot-buildpack-platform-2.6.7.jar
-Progress (1): 2.7/249 kBProgress (1): 5.5/249 kBProgress (1): 8.2/249 kBProgress (1): 11/249 kB Progress (1): 14/249 kBProgress (1): 16/249 kBProgress (1): 19/249 kBProgress (1): 21/249 kBProgress (1): 24/249 kBProgress (1): 27/249 kBProgress (1): 30/249 kBProgress (1): 32/249 kBProgress (2): 32/249 kB | 2.7/243 kBProgress (2): 35/249 kB | 2.7/243 kBProgress (2): 35/249 kB | 5.5/243 kBProgress (2): 38/249 kB | 5.5/243 kBProgress (2): 38/249 kB | 8.2/243 kBProgress (2): 40/249 kB | 8.2/243 kBProgress (2): 40/249 kB | 11/243 kB Progress (2): 40/249 kB | 14/243 kBProgress (2): 40/249 kB | 16/243 kBProgress (2): 43/249 kB | 16/243 kBProgress (2): 43/249 kB | 19/243 kBProgress (2): 46/249 kB | 19/243 kBProgress (2): 46/249 kB | 21/243 kBProgress (2): 49/249 kB | 21/243 kBProgress (2): 49/249 kB | 24/243 kBProgress (2): 49/249 kB | 27/243 kBProgress (2): 53/249 kB | 27/243 kBProgress (2): 53/249 kB | 30/243 kBProgress (2): 57/249 kB | 30/243 kBProgress (2): 61/249 kB | 30/243 kBProgress (2): 61/249 kB | 32/243 kBProgress (2): 65/249 kB | 32/243 kBProgress (2): 65/249 kB | 35/243 kBProgress (2): 65/249 kB | 38/243 kBProgress (2): 69/249 kB | 38/243 kBProgress (2): 73/249 kB | 38/243 kBProgress (2): 73/249 kB | 40/243 kBProgress (2): 77/249 kB | 40/243 kBProgress (2): 81/249 kB | 40/243 kBProgress (2): 81/249 kB | 43/243 kBProgress (2): 81/249 kB | 46/243 kBProgress (2): 85/249 kB | 46/243 kBProgress (2): 85/249 kB | 49/243 kBProgress (2): 90/249 kB | 49/243 kBProgress (2): 94/249 kB | 49/243 kBProgress (2): 98/249 kB | 49/243 kBProgress (2): 98/249 kB | 53/243 kBProgress (2): 98/249 kB | 57/243 kBProgress (2): 102/249 kB | 57/243 kBProgress (2): 102/249 kB | 61/243 kBProgress (2): 106/249 kB | 61/243 kBProgress (2): 106/249 kB | 65/243 kBProgress (2): 110/249 kB | 65/243 kBProgress (2): 114/249 kB | 65/243 kBProgress (2): 114/249 kB | 69/243 kBProgress (2): 114/249 kB | 73/243 kBProgress (2): 114/249 kB | 77/243 kBProgress (2): 118/249 kB | 77/243 kBProgress (2): 118/249 kB | 81/243 kBProgress (2): 122/249 kB | 81/243 kBProgress (2): 126/249 kB | 81/243 kBProgress (2): 131/249 kB | 81/243 kBProgress (2): 131/249 kB | 85/243 kBProgress (2): 131/249 kB | 90/243 kBProgress (2): 135/249 kB | 90/243 kBProgress (2): 135/249 kB | 94/243 kBProgress (2): 139/249 kB | 94/243 kBProgress (2): 139/249 kB | 98/243 kBProgress (2): 143/249 kB | 98/243 kBProgress (2): 147/249 kB | 98/243 kBProgress (2): 147/249 kB | 102/243 kBProgress (2): 147/249 kB | 106/243 kBProgress (2): 151/249 kB | 106/243 kBProgress (2): 151/249 kB | 110/243 kBProgress (2): 155/249 kB | 110/243 kBProgress (2): 155/249 kB | 114/243 kBProgress (2): 159/249 kB | 114/243 kBProgress (2): 163/249 kB | 114/243 kBProgress (2): 163/249 kB | 118/243 kBProgress (2): 163/249 kB | 122/243 kBProgress (2): 163/249 kB | 126/243 kBProgress (2): 163/249 kB | 131/243 kBProgress (2): 167/249 kB | 131/243 kBProgress (2): 167/249 kB | 135/243 kBProgress (2): 171/249 kB | 135/243 kBProgress (2): 171/249 kB | 139/243 kBProgress (2): 176/249 kB | 139/243 kBProgress (2): 176/249 kB | 143/243 kBProgress (2): 180/249 kB | 143/243 kBProgress (2): 180/249 kB | 147/243 kBProgress (2): 184/249 kB | 147/243 kBProgress (2): 188/249 kB | 147/243 kBProgress (2): 188/249 kB | 151/243 kBProgress (2): 192/249 kB | 151/243 kBProgress (2): 192/249 kB | 155/243 kBProgress (2): 196/249 kB | 155/243 kBProgress (2): 196/249 kB | 159/243 kBProgress (2): 196/249 kB | 163/243 kBProgress (2): 200/249 kB | 163/243 kBProgress (2): 204/249 kB | 163/243 kBProgress (2): 208/249 kB | 163/243 kBProgress (2): 212/249 kB | 163/243 kBProgress (2): 212/249 kB | 167/243 kBProgress (2): 212/249 kB | 171/243 kBProgress (2): 212/249 kB | 176/243 kBProgress (2): 212/249 kB | 180/243 kBProgress (2): 217/249 kB | 180/243 kBProgress (2): 221/249 kB | 180/243 kBProgress (2): 225/249 kB | 180/243 kBProgress (2): 229/249 kB | 180/243 kBProgress (2): 229/249 kB | 184/243 kBProgress (2): 229/249 kB | 188/243 kBProgress (2): 229/249 kB | 192/243 kBProgress (2): 229/249 kB | 196/243 kBProgress (2): 233/249 kB | 196/243 kBProgress (2): 237/249 kB | 196/243 kBProgress (2): 241/249 kB | 196/243 kBProgress (2): 241/249 kB | 200/243 kBProgress (2): 245/249 kB | 200/243 kBProgress (2): 245/249 kB | 204/243 kBProgress (2): 245/249 kB | 208/243 kBProgress (2): 249/249 kB | 208/243 kBProgress (2): 249/249 kB | 212/243 kBProgress (2): 249 kB | 212/243 kB    Progress (2): 249 kB | 217/243 kBProgress (2): 249 kB | 221/243 kBProgress (2): 249 kB | 225/243 kBProgress (2): 249 kB | 229/243 kBProgress (2): 249 kB | 233/243 kBProgress (2): 249 kB | 237/243 kBProgress (2): 249 kB | 241/243 kBProgress (2): 249 kB | 243 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/2.6.7/spring-boot-loader-tools-2.6.7.jar (249 kB at 948 kB/s)
-Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/2.6.7/spring-boot-buildpack-platform-2.6.7.jar (243 kB at 882 kB/s)
-[INFO] Replacing main artifact with repackaged archive
-[INFO] 
-[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ OAuth2OpenIDkeycloak ---
-[INFO] Installing D:\My_Works\workspace\OAuth2OpenIDkeycloak\target\OAuth2OpenIDkeycloak-0.0.1-SNAPSHOT.jar to C:\Users\zyedt\.m2\repository\fr\zied\bouteraa\OAuth2OpenIDkeycloak\0.0.1-SNAPSHOT\OAuth2OpenIDkeycloak-0.0.1-SNAPSHOT.jar
-[INFO] Installing D:\My_Works\workspace\OAuth2OpenIDkeycloak\pom.xml to C:\Users\zyedt\.m2\repository\fr\zied\bouteraa\OAuth2OpenIDkeycloak\0.0.1-SNAPSHOT\OAuth2OpenIDkeycloak-0.0.1-SNAPSHOT.pom
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  30.319 s
-[INFO] Finished at: 2022-04-24T18:09:03+02:00
-[INFO] ------------------------------------------------------------------------
