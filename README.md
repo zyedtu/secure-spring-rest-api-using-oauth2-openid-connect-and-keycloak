@@ -71,7 +71,7 @@ OpenID Connect utilise des jetons **JWT** pour authentifier les applications Web
 
 Si vous êtes confus par ces termes, voici la différence entre eux.
 
-• l'authentification: celui qui utilise l’application doit être identifié par un couple username/password.
+• l'authentification: celui qui utilise l’application doit être identifié par un couple username/password.        
 • l'autorisations: tous les utilisateurs n’ont pas nécessairement accès aux mêmes fonctionnalités. Par exemple, un utilisateur non administrateur ne doit pas pouvoir modifier de compte autre que le sien.    
 
 ![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/openIDConnect.png?raw=true "Title")
