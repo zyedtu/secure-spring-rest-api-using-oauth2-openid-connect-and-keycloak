@@ -113,6 +113,7 @@ Le Payload du jeton d'identification contient certains champs appelés **claims 
 Si le client a besoin de plus d'informations sur l'utilisateur, il peut spécifier des scope OpenID Connect standard pour indiquer au serveur d'autorisation d'inclure les informations requises dans la charge utile du jeton d'ID. Ces scopes sont { profile, email, address, phone }.       
 # keycloak:   
 Keycloak est une solution open source de gestion des identités et des accès (**IAM Identity and Access Management**) destinée aux applications et services modernes. Keycloak fournit des services d'authentification et d'autorisation prêts à l'emploi ainsi que des fonctionnalités avancées telles que la fédération d'utilisateurs, le courtage d'identité et la connexion sociale.   
+Keycloak fournit une solution d'authentification unique (sso), ce qui signifie qu'un utilisateur peut s'authentifier sur plusieurs systèmes avec un seul identifiant de connexion et un seul mot de passe.   
 ### Installation de keyCloak:
 ##### With Docker cmd:
 
