@@ -2,7 +2,21 @@
 		
 		
 # Aperçu (Overview):   
-Ce tutoriel explique comment nous pouvons sécuriser nos API REST à l'aide du protocole OpenId Connect. Nous utiliserons KeyCloak comme fournisseur d'identité (IAM).      
+Ce tutoriel explique comment nous pouvons sécuriser nos API REST à l'aide du protocole OpenId Connect. Nous utiliserons KeyCloak comme fournisseur (gestion) d'identité et des accès (Identity and Access Management - IAM).       
+# On va parler un peu de Single Sign-On (SSO) et contrôle d’accès:   
+le SSO, est une approche nécessairement globale de **l’authentification unique**, est un procédé qui permet de garantir une authentification unique aux utilisateurs du système d’information pour accéder à leurs applications, et ainsi de faire disparaitre les très nombreux couples identifiant/mot de passe qu’ils utilisent au quotidien pour travailler.        
+
+Fonctionnellement, le SSO s’appuie d’abord sur une première authentification réalisée par l’utilisateur : par exemple celle servant à se connecter à un poste de travail, ou à un portail d’entreprise. Ensuite, pendant toute la durée de sa session SSO, et pour toutes les applications auxquelles cet utilisateur souhaite accéder, le SSO prend en charge le processus d’authentification à ces applications à la place de l’utilisateur, et ce de manière transparente pour ce dernier.    
+
+Le marché du Single Sign-On (« SSO » ou authentification unique) est traditionnellement divisé en **4 catégories de solutions**.     
+### L’ENTERPRISE SSO: 
+est généralement mis en œuvre en interne dans l’entreprise à des fins de confort utilisateur. Il nécessite le déploiement d’un (ou plusieurs) composant(s) sur les postes de travail reliés au système d’information et consiste à injecter – à la place des utilisateurs – des accréditations secondaires (couples identifiant/mot de passe des utilisateurs pour les applications visées) dans des fenêtres applicatives qui ont été au préalable enrôlées. L’avantage de cette catégorie de SSO est de pouvoir couvrir facilement tout type d’applications (client lourd, web, virtualisée, mainframe, etc.) ; l’inconvénient est qu’il faut maîtriser tous les postes de travail sur lesquels on veut déployer ce SSO.    
+### Le Web SSO:  
+ s’inscrit dans des architectures 100% web, de type portails extranet/intranet par exemple. Il ne couvre par conséquent que des applications web.   
+### LA FÉDÉRATION D’IDENTITÉ:   
+Dans une approche purement technique, la fédération d’identité peut être considérée comme un moyen d’opérer une action de Web SSO en utilisant les protocoles standards associés du marché : SAMLv2, OAuth2, OpenID Connect, WS-Federation.    
+### LE MOBILE SSO:   
+Le Mobile SSO permet de fournir des fonctionnalités de Single Sign-On (Enterprise SSO, Web SSO, Fédération d’identité) sur les périphériques mobiles (smartphones, tablettes), et ainsi de sécuriser les accès aux applications du système d’information depuis ces périphériques.    
 # Quelques façons d'authentifier une requête HTTP:   
 * Authentification de base HTTP: Il s'agit de la technique la plus simple dans laquelle nous combinons nom d'utilisateur et mot de passe pour former une seule valeur. Cette valeur unique est ensuite encodée avec Base64 et transmise via l'en-tête HTTP Authorization. Le serveur vérifie l'en-tête d'autorisation et le compare aux informations d'identification stockées (nom d'utilisateur et mot de passe). S'ils correspondent, le serveur répond à la demande du client. Cependant, s'ils ne correspondent pas, le code d'état HTTP 401 pour indiquer un accès non autorisé est renvoyé au demandeur. Ce code informe le client de l'échec de l'authentification et la demande du client est donc refusée. Regardons l'exemples suivant avec **httpBasic()**:   
 
