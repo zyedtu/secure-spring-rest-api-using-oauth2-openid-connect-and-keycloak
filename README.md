@@ -37,21 +37,21 @@ L'*autorisation déléguée* est une approche permettant à une application tier
 ### Terminologie OAuth 2.0:  
 Comprendre ce protocole nous oblige à comprendre sa terminologie:     
 ##### Les acteurs concernés:    
-- Propriétaire de la ressource (ou utilisateur) : l'utilisateur propriétaire des données auxquelles l'application cliente souhaite accéder.     
+- Propriétaire de la ressource (Resource Owner): c'est l'utilisateur final propriétaire des données auxquelles l'application cliente souhaite accéder (Je suis le Resource Owner de mon profil facebook).         
 - Client (Application client): l'application qui souhaite accéder aux données de l'utilisateur.    
 - Serveur d'autorisation : est le composant qui effectue l'authentification et l'autorisation, il gère les demandes de connexion, l'authentification des utilisateurs, la génération de jetons et les validations de sécurité.     
 - Serveur de ressources: le système qui contient les données auxquelles le client souhaite accéder. Dans certains cas, le serveur de ressources et le serveur d'autorisation sont identiques. L'une des différences entre le serveur d'autorisation et le serveur de ressources est que le premier gère "uniquement" l'authentification et l'autorisation, et le second ne sert "que" le contenu (les ressources).        
 
-##### Les flux OAUTH (Understanding Different OAuth Flows):     
+##### Les flux OAUTH - Grant types (Understanding Different OAuth Flows):     
 OAUTH 2.0 expose **4** flux différents, Il n'est pas obligatoire de les implémenter tous, mais seulement ceux dont vous avez besoin.     
-Le but reste toujours le même, est d'obtenir un **access_token (jeton d'accès)** et l'utiliser pour accéder aux ressources protégées.       
-- Accorder le code d'Autorisation (Authorization Code Grant): un code est émis et utilisé pour obtenir le access_token . Ce code est publié dans une application frontale (sur le navigateur) après la connexion de l'utilisateur. Le jeton d'accès à la place est émis côté serveur, authentifiant le client avec son mot de passe et le code obtenu .    
+**Grant type**  est la façon d'obtenir un **access_token (jeton d'accès)** et l'utiliser pour accéder aux ressources protégées.       
+- Accord avec code d'Autorisation (Authorization Code Grant): un code est émis et utilisé pour obtenir le access_token . Ce code est publié dans une application frontale (sur le navigateur) après la connexion de l'utilisateur. Le jeton d'accès à la place est émis côté serveur, authentifiant le client avec son mot de passe et le code obtenu .    
 - Accord implicite (Implicit Grant):  une fois que l'utilisateur s'est connecté, le jeton d'accès est émis immédiatement.   
-- Octroi d'informations d'identification du client (Client Credential Grant): le jeton d'accès (access_token) est émis sur le serveur, authentifiant uniquement le client, pas l'utilisateur.     
-- Accord mot de passe (Password Grant): le jeton d'accès est émis immédiatement avec une seule demande contenant toutes les informations de connexion : nom d'utilisateur, mot de passe utilisateur, identifiant client et secret client. Cela pourrait sembler plus facile à mettre en œuvre, mais cela comporte quelques complications.      
+- Accord avec identification du client (Client Credential Grant): le jeton d'accès (access_token) est émis sur le serveur, authentifiant uniquement le client, pas l'utilisateur.     
+- Accord avec mot de passe (Password Grant): le jeton d'accès est émis immédiatement avec une seule demande contenant toutes les informations de connexion : nom d'utilisateur, mot de passe utilisateur, identifiant client et secret client. Cela pourrait sembler plus facile à mettre en œuvre, mais cela comporte quelques complications.       
 
 ##### Configuration OAuth 2.0:   
-Lorsque la demande d'accord d'autorisation est lancée, le client envoie certaines données de configuration au serveur d'autorisation en tant que paramètres de requête **query params**. Les paramètres de requête de base sont:    
+Lorsque la demande d'accord d'autorisation est lancée, le client envoie certaines données de configuration au serveur d'autorisation en tant que paramètres de requête **query params**. Les paramètres de requête de base sont: (le client peut être **posman**)     
 
 - client_id: cet ID aide le serveur d'autorisation à déterminer le client qui lance le flux OAuth.   
 - redirect_uri: l'URL à laquelle le serveur d'autorisation enverra (via une redirection) le code d'autorisation , après la connexion de l'utilisateur.    
@@ -78,7 +78,7 @@ Si vous répondez oui, vous serez redirigé vers l’URL de redirection avec un 
 # OpenID Connect (OIDC):   
 OpenID Connect est une couche d'identité au-dessus du protocole OAuth 2.0. Il étend OAuth 2.0 pour normaliser un moyen d'authentification.       
 OpenID Connect permet aux clients de vérifier l'identité de l'utilisateur final sur la base de l'authentification effectuée par un serveur d'autorisation, ainsi que d'obtenir des informations de profil de base sur l'utilisateur final d'une manière interopérable et de type REST.     
-OpenID Connect s'appuie sur OAuth2 et ajoute une authentification. OpenID Connect ajoute des contraintes à OAuth2 comme le point de terminaison UserInfo (Endpoint), le jeton d'identification (JWT est le format obligatoire pour le jeton)...      
+OpenID Connect s'appuie sur OAuth2 et ajoute une authentification. OpenID Connect ajoute des contraintes à OAuth2 comme le point de terminaison **UserInfo** (Endpoint), le jeton d'identification (JWT est le format obligatoire pour le jeton)...      
 OpenID Connect utilise des jetons **JWT** pour authentifier les applications Web.     
 • OAuth 2.0: sert pour l'autorisation.     
 • OpenID Connect:  sert à l'authentification.    
@@ -183,7 +183,7 @@ Ensuite dans *Credentials* on crée le password de l'utilisateur.
 Enfin on donne le rôle de l'utilisateur dans *Role Mapping*.   
 Dan mon projet j'ai crée deux utilisatuers.  
 	- ziedadmin avec un rôle ADMIN (password admin)    
-	- zieduser avec un rôle USER (password user)    
+	- zieduser avec un rôle USER (password admin)    
 	
 # Mettre en place une API Rest:   
 Dans cette partie on va mettre une application web restful seécuriéé par spring sécurité. Cette application va gérer les Student Service, est un simple CRUD API pour créer et supprimer des étudiants.   
@@ -224,8 +224,11 @@ spring:
       resourceserver: 
         jwt:
           issuer-uri : http://localhost:$port/auth/realms/$realm     
-$port: 	le port sur lequel le serveur Keycloak est exécuté, dan smon cas est 8089     
-$realm: le nom du domaine configuré dans mon cas est student-oidc.   
+
+• issuer-uri: cette proprièté permet au serveur de ressources (application back) de valider le jeton JWT, provenant de l'application client (postman par exemple), avec le serveur le serveur d'autorisation (keyCloak).      
+• $port: 	le port sur lequel le serveur Keycloak est exécuté, dans mon cas est 8089     
+• $realm: le nom du domaine configuré dans mon cas est student-oidc.   
+
 La configuration complète est:  
 
 		spring:
@@ -235,7 +238,7 @@ La configuration complète est:
 		        jwt:
 		          issuer-uri : http://localhost:8089/realms/student-oidc
 
-# Créer un code d'autorisation (Token) dans Postman:
+# Créer un code d'autorisation (Token JWT) dans Postman:
 
 ### Récupérer le secret client:  
 Cliquez sur l'onglet Informations d'identification et copiez le secret. Ce sera le secret client que nous utiliserons pour nous authentifier auprès de KeyCloak      
@@ -256,10 +259,41 @@ Nous avons maitenant tous les paramètres  dont nous avons besoin pour nous auth
 	- Keycloak Token Endpoint.   
 	
 Nous pouvons maintenant utiliser ces paramètres dans Postman pour créer un code d'autorisation (**token**). Ce token sera ensuite envoyé dans le header à chaque appel à l'API du service Étudiant. Nous devrions alors pouvoir invoquer toutes les opérations sans obtenir d'erreur d'autorisation.    
-### Créer le token dans Postman:     
+### Créer le token JWT dans Postman:     
 
 ![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/postman_token.png?raw=true "Title")
 
+### Créer le token JWT avec un curl:
+
+	curl -d "client_id=manager-student" 
+		-d "username=zieduser" 
+		-d "password=admin" 
+		-d "grant_type=password" 
+		-d "client_secret=fkgFhdy6Lz5Ut0OzuEIGr3q6TxKBtTcC" 
+		"http://localhost:8089/realms/student-oidc/protocol/openid-connect/token"   
+
+• grant_type: on a vue ça dans le paragraphe flux OAuth, là on utilise le flux *Password Grant*.    
+• client_id: 
+• client_secret: 
+
+Avec ce curl on peut générer on token JWT.     
+Comme on dit plutôt, que OpenID Connect, ajoute le **endPoint Userinfo**, pour chercher les attributs de l'utilisateur.  
+Tout d'abort on récupère l'URL de user_info comme on a fait avec l'URL de token. Ensuite on éxécute notre curl:   
+
+	curl -X GET "http://localhost:8089/realms/student-oidc/protocol/openid-connect/userinfo"
+		-H "Authorization: Bearer <on_met_notre_token_JWT>"
+on aura comme résultat:   
+
+	{
+	   "sub":"89a027d2-d904-4b27-a151-836ba0e1e193",
+	   "email_verified":false,
+	   "name":"Zied bouteraa",
+	   "preferred_username":"zieduser",
+	   "given_name":"Zied",
+	   "family_name":"bouteraa",
+	   "email":"zyedbout@gmail.com"
+	}
+	
 # Ajout des règle d'autorisation: 
 Dans cette partie on va créer une API qui permet d'ajouter un étudiant (student), mais que l'utilisateur qui a le rôle ADMIN peut faire cette action.    
 ### L'ajout du controller:   
