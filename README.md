@@ -45,19 +45,19 @@ Comprendre ce protocole nous oblige à comprendre sa terminologie:
 ##### Les flux OAUTH - Grant types (Understanding Different OAuth Flows):     
 OAUTH 2.0 expose **4** flux différents, Il n'est pas obligatoire de les implémenter tous, mais seulement ceux dont vous avez besoin.     
 **Grant type**  est la façon d'obtenir un **access_token (jeton d'accès)** et l'utiliser pour accéder aux ressources protégées.       
-- Accord avec code d'Autorisation (Authorization Code Grant): un code est émis et utilisé pour obtenir le access_token . Ce code est publié dans une application frontale (sur le navigateur) après la connexion de l'utilisateur. Le jeton d'accès à la place est émis côté serveur, authentifiant le client avec son mot de passe et le code obtenu .    
-- Accord implicite (Implicit Grant):  une fois que l'utilisateur s'est connecté, le jeton d'accès est émis immédiatement.   
-- Accord avec identification du client (Client Credential Grant): le jeton d'accès (access_token) est émis sur le serveur, authentifiant uniquement le client, pas l'utilisateur.     
-- Accord avec mot de passe (Password Grant): le jeton d'accès est émis immédiatement avec une seule demande contenant toutes les informations de connexion : nom d'utilisateur, mot de passe utilisateur, identifiant client et secret client. Cela pourrait sembler plus facile à mettre en œuvre, mais cela comporte quelques complications.       
+• Autorisation avec code (Authorization Code Grant): un code est émis et utilisé pour obtenir le access_token . Ce code est publié dans une application frontale (sur le navigateur) après la connexion de l'utilisateur. Le jeton d'accès à la place est émis côté serveur, authentifiant le client avec son mot de passe et le code obtenu .    
+• Autorisation implicite (Implicit Grant):  une fois que l'utilisateur s'est connecté, le jeton d'accès est émis immédiatement.   
+• Autorisation avec Credential (login/password) du client (Client Credential Grant): le jeton d'accès (access_token) est émis sur le serveur, authentifiant uniquement le client, pas l'utilisateur.     
+• Autorisation avec mot de passe (Password Grant): le jeton d'accès est émis immédiatement avec une seule demande contenant toutes les informations de connexion : nom d'utilisateur, mot de passe utilisateur, identifiant client et secret client. Cela pourrait sembler plus facile à mettre en œuvre, mais cela comporte quelques complications.       
 
 ##### Configuration OAuth 2.0:   
 Lorsque la demande d'accord d'autorisation est lancée, le client envoie certaines données de configuration au serveur d'autorisation en tant que paramètres de requête **query params**. Les paramètres de requête de base sont: (le client peut être **posman**)     
 
-- client_id: cet ID aide le serveur d'autorisation à déterminer le client qui lance le flux OAuth.   
-- redirect_uri: l'URL à laquelle le serveur d'autorisation enverra (via une redirection) le code d'autorisation , après la connexion de l'utilisateur.    
-- response_type: le type de réponse que nous voulons obtenir du serveur d'autorisation.   
-- scope: une liste de permis que l'application demande à l'utilisateur. Par exemple : read_email , write_post . L'utilisateur sera invité à accorder ces autorisations. Cela sera utile lorsque le client accédera au serveur de ressources.   
-- client_secret: est fourni par le service d'autorisation. Ce paramètre peut être obligatoire ou non, en fonction du flux OAuth.   
+• client_id: cet ID aide le serveur d'autorisation à déterminer le client qui lance le flux OAuth.   
+• redirect_uri: l'URL à laquelle le serveur d'autorisation enverra (via une redirection) le code d'autorisation , après la connexion de l'utilisateur.    
+• response_type: le type de réponse que nous voulons obtenir du serveur d'autorisation.   
+• scope: une liste de permis que l'application demande à l'utilisateur. Par exemple : read_email , write_post . L'utilisateur sera invité à accorder ces autorisations. Cela sera utile lorsque le client accédera au serveur de ressources.   
+• client_secret: est fourni par le service d'autorisation. Ce paramètre peut être obligatoire ou non, en fonction du flux OAuth.   
   
 ### Un exemple du monde réel:    
 En clair, OAuth 2.0 permet à vos clients de créer un compte sur votre application web en se connectant sur un compte appartenant à une société vérifiée, comme Google, Facebook, Twitter,.. ou un serveur de gestion des identités et des accès comme de gestion des identités et des accès.     
@@ -163,12 +163,15 @@ On va créer un nouveau domain, on click sur **Add realm**, on suite on ajoute u
 ### Enregistrez un client KeyCloak OAuth 2.0:   
 Sélectionnez Clients dans le menu de navigation de gauche, puis cliquez sur le bouton **Créer**. Veuillez confirmer que vous êtes dans le domaine student-oidc:    
 On crée le client *manager-student* avec c'est deux information:   
-	- ID client: manager-student   
-	- Protocole client : openid-connect   
+	• ID client: manager-student   
+	• Protocole client : openid-connect   
 
 KeyCloak présentera maintenant une fenêtre pour ajouter des propriétés supplémentaires pour ce client:   
-	- Access Type: confidential     
-	- Valid redirect URIs: http://localhost:3000/*    
+	• Access Type: *confidential*    
+	• Access Grant: *Direct Access Grants Enabled*, avec cette proprièté on dan le termes de OAuth2 est une Autorisation avec Credential cllient (login/passowrd).        
+	• Valid redirect URIs: http://localhost:3000/*    
+
+![Alt text](https://github.com/zyedtu/secure-spring-rest-api-using-oauth2-openid-connect-and-keycloak/blob/master/src/main/resources/client_keycloak.png?raw=true "Title")
 
 Remarque : des URI de redirection valides sont nécessaires si vous essayez d'accéder à l'API via une application frontale comme Angular . Puisque nous allons accéder à l'API via Postman , cette URL peut être n'importe quelle URL et n'a pas besoin d'être une URL active.      
 ### Ajouter des rôles:
