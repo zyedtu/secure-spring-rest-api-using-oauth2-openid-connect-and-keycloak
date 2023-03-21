@@ -167,7 +167,7 @@ On crée le client *manager-student* avec c'est deux information:
 	• Protocole client : openid-connect   
 
 KeyCloak présentera maintenant une fenêtre pour ajouter des propriétés supplémentaires pour ce client:   
-	• Access Type: *confidential*    
+	• Access Type: *confidential* (avec ce type d'accés on aura le client_secret).        
 	• Access Grant: *Direct Access Grants Enabled*, avec cette proprièté on dan le termes de OAuth2 est une Autorisation avec Credential cllient (login/passowrd).        
 	• Valid redirect URIs: http://localhost:3000/*    
 
