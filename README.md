@@ -273,8 +273,8 @@ Nous pouvons maintenant utiliser ces paramètres dans Postman pour créer un cod
 		"http://localhost:8089/realms/student-oidc/protocol/openid-connect/token"   
 
 • grant_type: on a vue ça dans le paragraphe flux OAuth, là on utilise le flux *Password Grant*.    
-• client_id: 
-• client_secret: 
+• client_id: cet ID détermine le client qui lance le flux OAuth.        
+• client_secret: lorsque le type d'acces n'est pas public (confidential), on a besoin de client_secret. (application privés sans client_secret).    
 
 Avec ce curl on peut générer on token JWT.     
 Comme on dit plutôt, que OpenID Connect, ajoute le **endPoint Userinfo**, pour chercher les attributs de l'utilisateur.  
